@@ -1,5 +1,5 @@
 /// @description Spawn Obstacle
-if !instance_exists(obj_drag_tutorial) && !instance_exists(obj_obstacle_tutorial) {	//Once the player knows how to control the ship...
+if !instance_exists(obj_drag_tutorial) && !instance_exists(obj_obstacle_tutorial) && !global.success {	//Once the player knows how to control the ship...
 	repeat (floor(global.game_difficulty/4)+1) {
 		var _obstacle = obstacles[irandom(array_length(obstacles)-1)];
 		var _width = sprite_get_width(spr_debris_large)/2;

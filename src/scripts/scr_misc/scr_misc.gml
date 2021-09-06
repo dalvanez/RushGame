@@ -1,5 +1,6 @@
 #macro fnt_font font_add_sprite_ext(spr_font,"!\"$%'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~",false,0)
-#macro default_difficulty 0.5;
+#macro default_difficulty	0.5;
+#macro score_goal_inc		75000;
 
 //@function				play_sound();
 //@description			Plays a sound without looping or high priority.
@@ -14,3 +15,6 @@ function play_sound_single(snd) {
 }
 
 global.game_difficulty = default_difficulty;		//Difficulty float; manages speed of obstacles as well as size.
+global.success = false;								//Whether or not the game has been won.
+global.score_goal = score_goal_inc;					//The score needed to beat the game.
+global.wins = 0;									//How many times the player has beat the game.

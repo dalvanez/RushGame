@@ -5,4 +5,4 @@ if fx_particle!=noone && fx_system!=noone {	//These values are initialized to no
 	}
 }
 
-play_sound(choose(snd_explosion0,snd_explosion1,snd_explosion2));	//Play a random explosion sound
+if (!global.success) play_sound(choose(snd_explosion0,snd_explosion1,snd_explosion2));	//Play a random explosion sound

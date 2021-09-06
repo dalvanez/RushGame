@@ -23,7 +23,7 @@ function ship_movement(){
 	
 		phy_speed_x+= _vx*abs(_spd);					//Apply the speed in the correct direction.
 		
-		if (_dx < 60 && thrusting<=min_thrust && _dy > 60 && !thrust_reset) {		//Thrust downward as an attack.
+		if (_dx < 60 && thrusting<=min_thrust && _dy > 100 && !thrust_reset) {		//Thrust downward as an attack.
 			thrusting = 50;
 			thrust_reset = true;
 			play_sound_single(snd_attack);
@@ -93,7 +93,7 @@ function ship_health() {
 //@description				Damages the ship by a certain amount.
 function ship_damage(amount) {
 	if is_undefined(amount) amount = 1;	//Ensure there is an amount to apply
-	if invulnerability<=0 {
+	if invulnerability<=0 && !exiting {
 		damage+=amount;
 		if (amount>0) {						//If we're doing actual damage, then create particles.
 			play_sound_single(snd_damage);	//Play damage sound

@@ -15,6 +15,7 @@ invulnerability = 0;		//How long until the ship can take damage again.
 invuln_time	= 96;			//How many frames invulnerability lasts.
 destroyed = false;			//Whether or not this ship is done for.
 entering = true;			//Whether or not this ship is entering the screen for the first time.
+exiting	 = false;			//Whether or not this shit is exiting the screen for the end screen.
 thrust_reset = false;		//Whether to wait until the cursor returns to the ship to thrust again.
 min_thrust = -90;			//The minimum thrust value; also the required value to thrust again.
 thrusting = min_thrust;		//Amount of frames left for attacking
@@ -30,7 +31,7 @@ passenger = {				//The Passenger on this ship.
 	color: c_white,
 	index: 0,
 	new_passenger: function() {
-		color = choose(c_purple,c_blue,c_red,c_green,c_yellow);
+		color = choose(c_purple,c_aqua,c_red,c_green,c_yellow);
 		index = irandom(sprite_get_number(spr_alien));
 	}
 };
