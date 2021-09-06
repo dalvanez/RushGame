@@ -15,3 +15,7 @@ if (global.success && passenger!=noone) {
 for (var i = 0; i < clamp(global.wins,0,max_wins); i++) {
 	draw_sprite(spr_win,0,(i*14),2);
 }
+
+//Draw Version number in bottom left
+draw_set_color(c_white);
+draw_text(room_width-string_width(GM_version),room_height-string_height(GM_version),GM_version);

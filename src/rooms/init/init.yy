@@ -24,6 +24,7 @@
       ],"visible":true,"depth":100,"userdefinedDepth":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"gridX":32,"gridY":32,"layers":[],"hierarchyFrozen":false,"resourceVersion":"1.0","name":"Instances","tags":[],"resourceType":"GMRInstanceLayer",},
     {"instances":[
         {"properties":[],"isDnd":false,"objectId":{"name":"obj_planet","path":"objects/obj_planet/obj_planet.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":128.0,"y":480.0,"resourceVersion":"1.0","name":"inst_2D629AFF","tags":[],"resourceType":"GMRInstance",},
+        {"properties":[],"isDnd":false,"objectId":{"name":"obj_onscreen_score","path":"objects/obj_onscreen_score/obj_onscreen_score.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":-64.0,"y":128.0,"resourceVersion":"1.0","name":"inst_626BA7A0","tags":[],"resourceType":"GMRInstance",},
       ],"visible":true,"depth":200,"userdefinedDepth":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"gridX":32,"gridY":32,"layers":[],"hierarchyFrozen":false,"resourceVersion":"1.0","name":"Planet","tags":[],"resourceType":"GMRInstanceLayer",},
     {"spriteId":{"name":"bg_space","path":"sprites/bg_space/bg_space.yy",},"colour":570425343,"x":0,"y":0,"htiled":false,"vtiled":false,"hspeed":0.0,"vspeed":0.0,"stretch":false,"animationFPS":30.0,"animationSpeedType":0,"userdefinedAnimFPS":false,"visible":true,"depth":300,"userdefinedDepth":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"gridX":32,"gridY":32,"layers":[],"hierarchyFrozen":false,"resourceVersion":"1.0","name":"SpaceColor","tags":[],"resourceType":"GMRBackgroundLayer",},
     {"spriteId":{"name":"bg_space_stars","path":"sprites/bg_space_stars/bg_space_stars.yy",},"colour":4294967295,"x":0,"y":0,"htiled":false,"vtiled":false,"hspeed":0.0,"vspeed":0.0,"stretch":false,"animationFPS":30.0,"animationSpeedType":0,"userdefinedAnimFPS":false,"visible":true,"depth":400,"userdefinedDepth":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"gridX":32,"gridY":32,"layers":[],"hierarchyFrozen":false,"resourceVersion":"1.0","name":"Stars","tags":[],"resourceType":"GMRBackgroundLayer",},
@@ -39,6 +40,7 @@
     {"name":"inst_5155D18B","path":"rooms/init/init.yy",},
     {"name":"inst_2E17CEB1","path":"rooms/init/init.yy",},
     {"name":"inst_2D629AFF","path":"rooms/init/init.yy",},
+    {"name":"inst_626BA7A0","path":"rooms/init/init.yy",},
   ],
   "inheritCreationOrder": false,
   "sequenceId": null,

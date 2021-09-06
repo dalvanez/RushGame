@@ -26,5 +26,10 @@ if !entering && !exiting {
 		instance_destroy();
 	} else {
 		phy_speed_y = clamp(phy_speed_y+.05,0,2);
+		
+		var _vx = ((room_width/2)-x);
+		phy_speed_x+=_vx*max_dragging_speed*.25;	//Move towards the center of the screen.
+		phy_speed_x*=.6;							//Reduce speed.
+		ship_angle*=.89;							//Rotate straight up.
 	}
 }

@@ -1,6 +1,10 @@
 #macro fnt_font font_add_sprite_ext(spr_font,"!\"$%'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~",false,0)
 #macro default_difficulty	0.5;
-#macro score_goal_inc		75000;
+#macro score_goal_inc		50000;
+
+#macro screen_width			540
+
+#macro screen_height		960
 
 //@function				play_sound();
 //@description			Plays a sound without looping or high priority.
