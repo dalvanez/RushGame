@@ -7,7 +7,7 @@ alarm[0] = 60;				//Increment survival time.
 //Gameplay Variables
 mouse_inside = false;		//Whether or not the mouse is hovered over this object.
 dragging = false;			//Whether or not this object is being pulled towards the mouse cursor.
-max_dragging_speed = 0.08;	//The maximum speed this object can move at while being dragged.
+max_dragging_speed = 0.085;	//The maximum speed this object can move at while being dragged.
 drag_x = x;					//The x where the ship is being dragged from.
 drag_y = y;					//The y where the ship is being dragged from.
 touch_y = y;				//The y where a mobile device has touched the screen.
@@ -43,7 +43,7 @@ with (passenger) new_passenger();	//Generate a new passenger for this ship.
 
 //Methods
 eject_passenger = function() {
-	with instance_create_layer(x,y,layer,obj_passenger) {
+	with instance_create_layer(x,y,"Planet",obj_passenger) {
 		image_index = other.passenger.index;
 		image_blend = other.passenger.color;
 	}
@@ -81,7 +81,7 @@ part_type_gravity(passenger_sweat,.1,270);
 part_type_alpha2(passenger_sweat,1,0);
 part_type_life(passenger_sweat,8,16);
 
-thruster_fire = part_type_create();
+thruster_fire = part_type_create();						//Unused; did not look good
 part_type_shape(thruster_fire,pt_shape_pixel);
 part_type_color1(thruster_fire,c_white);
 part_type_direction(thruster_fire,270,270,0,0);

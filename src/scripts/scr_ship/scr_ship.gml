@@ -40,7 +40,7 @@ function ship_movement(){
 			play_sound_single(snd_attack);
 		}
 		
-		if (my<bbox_bottom+180) thrust_reset = false;	//If the mouse returned to the ship
+		if (my<bbox_bottom+180 || !mouse_check_button(mb_left)) thrust_reset = false;		//If the mouse returned to the ship or if they release left click
 		else if (global.mobile_device) {
 			if (!mouse_check_button(mb_left) || my<=touch_y) thrust_reset = false;
 		}

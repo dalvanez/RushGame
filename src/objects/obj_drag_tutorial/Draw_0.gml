@@ -1,6 +1,14 @@
 /// @description Draw Dragging Tutorial
 if (instance_exists(target_object)) {
-	draw_sprite_ext(spr_hand,0,target_object.x+x_offset,target_object.y+y_offset,pulse,pulse,image_angle,image_blend,image_alpha);
+	var _tx = target_object.x;
+	var _ty = target_object.y;
+	if (global.mobile_device) {			//Draw the gesture tutorial away from the ship
+		_tx = room_width/2;
+		if (mouse_check_button(mb_left)) _ty = mouse_y-140;
+		else							 _ty = room_height/2;
+	}
+	
+	draw_sprite_ext(spr_hand,0,_tx+x_offset,_ty+y_offset,pulse,pulse,image_angle,image_blend,image_alpha);
 	switch(tutorial_animation) {
 		case tanim.hold_click_tut:
 			var _ww = mouse_x+8;
@@ -10,7 +18,8 @@ if (instance_exists(target_object)) {
 			var _linew = 1;
 			
 			if (global.mobile_device) {
-				_ww+=32;
+				if (_ww>room_width/2) _ww+=32;	//Render away from touch point.
+				else				  _wh-=32;	//Prevent the circle animation from drawing offscreen.
 				_wh-=48;
 				wheel_radius = 12;
 			}
@@ -30,9 +39,9 @@ if (instance_exists(target_object)) {
 		case tanim.drag_tut:
 		case tanim.attack_tut:
 			draw_set_color(c_black);
-			draw_line_width(target_object.x,target_object.y,target_object.x+x_offset,target_object.y+y_offset,6);
+			draw_line_width(_tx,_ty,_tx+x_offset,_ty+y_offset,6);
 			draw_set_color(c_white);
-			draw_line_width(target_object.x,target_object.y,target_object.x+x_offset,target_object.y+y_offset,4);
+			draw_line_width(_tx,_ty,_tx+x_offset,_ty+y_offset,4);
 			break;
 	}
 }

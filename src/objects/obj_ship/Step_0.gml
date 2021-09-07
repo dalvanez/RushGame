@@ -31,5 +31,6 @@ if !entering && !exiting {
 		phy_speed_x+=_vx*max_dragging_speed*.25;	//Move towards the center of the screen.
 		phy_speed_x*=.6;							//Reduce speed.
 		ship_angle*=.89;							//Rotate straight up.
+		ship_angled*=.89;							//Rotate straight up.
 	}
 }

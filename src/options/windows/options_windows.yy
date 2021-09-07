@@ -1,7 +1,7 @@
 {
   "option_windows_display_name": "RushGame",
   "option_windows_executable_name": "${project_name}.exe",
-  "option_windows_version": "1.0.0.1",
+  "option_windows_version": "1.0.0.2",
   "option_windows_company_info": "Darius Alvanez",
   "option_windows_product_info": "RushGame",
   "option_windows_copyright_info": "",
