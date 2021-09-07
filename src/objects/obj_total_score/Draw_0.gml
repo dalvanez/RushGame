@@ -6,7 +6,16 @@ var _wh = room_height/2;
 var _txt = string(score);
 draw_text(_ww-(string_width(_txt)/2),_wh,_txt);
 
-if (restart_prompt) draw_sprite(spr_mouse_left,0,_ww,_wh+sprite_get_height(spr_mouse_left)+16);
+var _prompt = spr_mouse_left;
+var _xscale = 1;
+var _yscale = 1;
+if (global.mobile_device) {
+	_prompt = spr_hand;
+	_xscale = 2;
+	_yscale = 2;
+}
+
+if (restart_prompt) draw_sprite_ext(_prompt,0,_ww,_wh+sprite_get_height(_prompt)+16,_xscale,_yscale,0,c_white,1);
 if (global.success && passenger!=noone) {
 	draw_sprite_ext(spr_alien,passenger.index,_ww,_wh-sprite_get_height(spr_alien),1,1,0,passenger.color,1);
 }

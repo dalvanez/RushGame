@@ -18,6 +18,7 @@ function play_sound_single(snd) {
 	if !audio_is_playing(snd) play_sound(snd);
 }
 
+global.mobile_device   = false;						//Whether or not to change the game to fit mobile
 global.game_difficulty = default_difficulty;		//Difficulty float; manages speed of obstacles as well as size.
 global.success = false;								//Whether or not the game has been won.
 global.score_goal = score_goal_inc;					//The score needed to beat the game.

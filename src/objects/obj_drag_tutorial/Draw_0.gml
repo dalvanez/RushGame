@@ -8,6 +8,12 @@ if (instance_exists(target_object)) {
 			var segments = 2;
 			var wheel_radius = 6;
 			var _linew = 1;
+			
+			if (global.mobile_device) {
+				_ww+=32;
+				_wh-=48;
+				wheel_radius = 12;
+			}
 		
 			draw_set_color(c_black);
 			draw_circle(_ww,_wh,wheel_radius+2,false);

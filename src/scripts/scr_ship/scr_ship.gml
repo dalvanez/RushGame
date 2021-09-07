@@ -4,10 +4,12 @@ function ship_movement(){
 	var mx = clamp(mouse_x,0,room_width);	//Restrict the mouse positions for calculation to the size of the room.
 	var my = clamp(mouse_y,0,room_height);	//''
 	
+	if (global.mobile_device) mouse_inside = true;
 	if (mouse_check_button_pressed(mb_left) && mouse_inside && !destroyed) {
 		dragging = true;	//Set the ship to be dragged towards cursor
 		drag_x = x-mx;		//Set the position the ship is being dragged from.
 		drag_y = y-my;		//''
+		touch_y = my;		//Set the touch y to help with attacking on mobile
 	} else if (!mouse_check_button(mb_left) || destroyed) dragging = false;	//Stop being dragged towards cursor
 
 	if dragging {
@@ -15,21 +17,33 @@ function ship_movement(){
 		var _dy = abs(my-(y+drag_y));					//Difference between mouse and drag y
 		var _vx = (mx-(x+drag_x));						//Calculate movement vector.
 		var _vy = (my-(y+drag_y));
+		
+		if (global.mobile_device) {						//Adjust for mobile
+			_vy = (my-touch_y);	
+			_dy = (my-touch_y);
+			_vx = (mx-x);		
+		}
+		
 		var _len = sqrt((_vx*_vx)+(_vy*_vy));
 	
 		_vx = _vx/_len;
 		_vy = _vy/_len;
 		var _spd = (((mx-x)/96)*max_dragging_speed);	//Apply speed relative to distance from cursor.
+		
+		if (global.mobile_device && touch_y>bbox_bottom) _vx*=.6;	//Reduce speed if mobile users are not directly touching the ship
 	
 		phy_speed_x+= _vx*abs(_spd);					//Apply the speed in the correct direction.
 		
-		if (_dx < 60 && thrusting<=min_thrust && _dy > 100 && !thrust_reset) {		//Thrust downward as an attack.
+		if (_dx < max_dx && thrusting<=min_thrust && _dy > max_dy && !thrust_reset) {		//Thrust downward as an attack.
 			thrusting = 50;
 			thrust_reset = true;
 			play_sound_single(snd_attack);
 		}
 		
 		if (my<bbox_bottom+180) thrust_reset = false;	//If the mouse returned to the ship
+		else if (global.mobile_device) {
+			if (!mouse_check_button(mb_left) || my<=touch_y) thrust_reset = false;
+		}
 	} else if destroyed {
 		phy_speed_x*=.7;								//Slow the ship down every step
 		phy_speed_y-=.2;								//Send the ship upwards out the screen.
@@ -49,7 +63,8 @@ function ship_movement(){
 	if (thrusting > min_thrust) thrusting--;
 
 	drag_yd+=(drag_y-drag_yd)*.5;	//Dampen drag_yd towards drag_y; prevents "snapping" when cursor hovers over ship
-	ship_angle = clamp((phy_speed_x*15)*(-drag_yd/sprite_height),-45,45);	//Calculate the intended ship angle
+	ship_angle = clamp((phy_speed_x*15)*(-drag_yd/sprite_height),-ship_angle_max,ship_angle_max);	//Calculate the intended ship angle
+	if (global.mobile_device && touch_y>bbox_bottom) ship_angle*=-1;		//Flip the ship angle if a mobile player is not touching the ship itself
 	ship_angled+= (ship_angle-ship_angled)*.85;								//Dampen angle towards intended angle
 	phy_speed_x*=.98;														//Slow the ship down gradually
 	if (!destroyed) phy_speed_y*=.75;										//Slow the ship down quickly

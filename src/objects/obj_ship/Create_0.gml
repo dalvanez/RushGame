@@ -10,6 +10,9 @@ dragging = false;			//Whether or not this object is being pulled towards the mou
 max_dragging_speed = 0.08;	//The maximum speed this object can move at while being dragged.
 drag_x = x;					//The x where the ship is being dragged from.
 drag_y = y;					//The y where the ship is being dragged from.
+touch_y = y;				//The y where a mobile device has touched the screen.
+max_dx = 60;				//The maximum difference between x and mouse_x allowed to allow swiping down
+max_dy = 100;				//The threshold that allows or disallows attacking.
 damage = 0;					//The amount of damage sustained by the ship
 invulnerability = 0;		//How long until the ship can take damage again.
 invuln_time	= 96;			//How many frames invulnerability lasts.
@@ -27,6 +30,7 @@ combo = 0;					//Number of obstacles destroyed in one attack.
 drag_yd = drag_y;			//The dampened value of drag_y to help make it look like the ship is being dragged from the location of the cursor
 ship_angle	= 0;			//The angle that the ship sprite is drawn at.
 ship_angled = ship_angle;	//The dampened value of the angle the ship sprite is drawn at.
+ship_angle_max = 45;		//The maximum angle for the ship to tip at
 passenger = {				//The Passenger on this ship.
 	color: c_white,
 	index: 0,
@@ -43,6 +47,13 @@ eject_passenger = function() {
 		image_index = other.passenger.index;
 		image_blend = other.passenger.color;
 	}
+}
+
+//Mobile Support
+if (global.mobile_device) {
+	ship_angle_max = 15;
+	max_dx = infinity;	//Just allow swiping no matter where mouse_x is.
+	max_dy = 60;
 }
 
 //Particles
